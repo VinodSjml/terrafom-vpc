@@ -1,3 +1,3 @@
 module "vpc"{
-    source = "value"
+    source = "/home/centos/terraform-vpc/vendor/modules/vpc"
 }
