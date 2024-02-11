@@ -1,2 +1,2 @@
-# terrafom-vpc
-terrafom-vpc
+# terraform-vpc
+terraform-vpc
