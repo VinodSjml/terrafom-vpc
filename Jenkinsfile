@@ -22,7 +22,7 @@ pipeline{
         }
         stage('terraform action'){
             steps{
-                sh "terraform ${Action} -input=false ${ENVI}.tfplan"
+                sh "terraform ${ACTION} -input=false ${ENVI}.tfplan"
             }
         }
     }
