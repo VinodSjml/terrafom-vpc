@@ -11,6 +11,8 @@ pipeline{
         stage('terraform init'){
             steps{
                 sh "pwd"
+                sh "cd .."
+                sh "cd terraform-vpc"
                 sh "terrafile -f env-${ENVI}/Terrafile"
                 sh "terraform init -backend-config=env-${ENVI}/${ENVI}-backend.tfvars"
             }
