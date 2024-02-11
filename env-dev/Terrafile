@@ -1,0 +1,3 @@
+vpc:
+    source:  "https://github.com/VinodSjml/tf-module-vpc.git"
+    version: "main"
