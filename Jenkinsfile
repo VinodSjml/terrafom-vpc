@@ -6,7 +6,7 @@ pipeline{
     stages {
         stage('terraform init'){
             steps{
-                sh "terrafile -f env-${env}/Terrafile"
+                sh "terrafile -f env-dev/Terrafile"
                 sh "terraform init -backend-config=env-${env}/${env}-backend.tfvars"
             }
         }
