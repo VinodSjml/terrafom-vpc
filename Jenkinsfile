@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice (name: 'ENVI', choices:['qa','dev', 'prod'],description: 'choose environment')
+        choice (name: 'ENVI', choices:['dev', 'prod'],description: 'choose environment')
         choice (name: 'ACTION', choices:['apply','destroy'],description: 'choose action')
     }
     options{
