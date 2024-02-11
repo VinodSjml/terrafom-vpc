@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice (name: 'env', choices:['dev', 'prod'],description: 'choose environment')
+        choice (name: 'env', choices:['qa','dev', 'prod'],description: 'choose environment')
     }
     stages {
         stage('terraform init'){
