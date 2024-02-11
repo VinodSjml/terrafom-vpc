@@ -3,6 +3,9 @@ pipeline{
     parameters{
         choice (name: 'env', choices:['qa','dev', 'prod'],description: 'choose environment')
     }
+    options{
+        ansiColor('xterm')
+    }
     stages {
         stage('terraform init'){
             steps{
