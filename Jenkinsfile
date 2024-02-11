@@ -2,7 +2,7 @@ pipeline{
     agent any
     parameters{
         choice (name: 'ENVI', choices:['qa','dev', 'prod'],description: 'choose environment')
-        choice (name: 'Action', choices:['apply','destroy'], description: 'choose action')
+        choice (name: 'Action', choices:['choose one','apply','destroy'], description: 'choose action')
     }
     options{
         ansiColor('xterm')
