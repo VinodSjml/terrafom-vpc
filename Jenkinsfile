@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice (name: 'env', choices:['qa','dev', 'prod'],description: 'choose environment')
+        choice (name: 'ENVI', choices:['qa','dev', 'prod'],description: 'choose environment')
     }
     options{
         ansiColor('xterm')
@@ -9,19 +9,19 @@ pipeline{
     stages {
         stage('terraform init'){
             steps{
-                sh "terrafile -f env-dev/Terrafile"
-                sh "terraform init -backend-config=env-dev/dev-backend.tfvars"
+                sh "terrafile -f env-${ENVI}/Terrafile"
+                sh "terraform init -backend-config=env-${ENVI}/${ENVI}-backend.tfvars"
             }
         }
         stage('terraform plan'){
             steps{
-                sh "rm dev.tfplan"
-                sh "terraform plan -var-file=env-dev/dev.tfvars -out=dev.tfplan"
+                sh "rm ${ENVI}.tfplan"
+                sh "terraform plan -var-file=env-${ENVI}/${ENVI}.tfvars -out=${ENVI}.tfplan"
             }
         }
         stage('terraform action'){
             steps{
-                sh "terraform apply -input=false dev.tfplan"
+                sh "terraform apply -input=false ${ENVI}.tfplan"
             }
         }
     }
