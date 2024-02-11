@@ -2,6 +2,7 @@ pipeline{
     agent any
     parameters{
         choice (name: 'ENVI', choices:['qa','dev', 'prod'],description: 'choose environment')
+        choice (name: 'Action', choices:['apply'. 'destroy'], description: 'choose action')
     }
     options{
         ansiColor('xterm')
@@ -19,9 +20,9 @@ pipeline{
                 sh "terraform plan -var-file=env-${ENVI}/${ENVI}.tfvars -out=${ENVI}.tfplan"
             }
         }
-        stage('terraform action'){
+        stage('terraform ${Action}'){
             steps{
-                sh "terraform apply -input=false ${ENVI}.tfplan"
+                sh "terraform ${Action} -input=false ${ENVI}.tfplan"
             }
         }
     }
