@@ -16,7 +16,7 @@ pipeline{
         }
         stage('terraform plan'){
             steps{
-                sh "rm ${ENVI}.tfplan"
+                sh "rm ${ENVI}.tfplan || true"
                 sh "terraform plan -var-file=env-${ENVI}/${ENVI}.tfvars -out=${ENVI}.tfplan"
             }
         }
