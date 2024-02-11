@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent {label 'workstation'}
     parameters{
         choice (name: 'ENVI', choices:['dev', 'prod'],description: 'choose environment')
         choice (name: 'ACTION', choices:['apply','destroy'],description: 'choose action')
