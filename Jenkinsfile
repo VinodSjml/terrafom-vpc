@@ -17,12 +17,12 @@ pipeline{
         stage('terraform plan'){
             steps{
                 sh "rm ${ENVI}.tfplan || true"
-                sh "terraform plan -var-file=env-${ENVI}/${ENVI}.tfvars -out=${ENVI}.tfplan"
+                sh "terraform plan -var-file=env-${ENVI}/${ENVI}.tfvars"
             }
         }
         stage('terraform action'){
             steps{
-                sh "terraform ${ACTION} -input=false ${ENVI}.tfplan"
+                sh "terraform ${ACTION}"
             }
         }
     }
